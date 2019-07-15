@@ -3,13 +3,18 @@ import {
     BaseEntity, 
     Column, 
     Entity, 
+    ManyToOne,
     PrimaryGeneratedColumn, 
     CreateDateColumn, 
     UpdateDateColumn, 
     BeforeInsert, 
-    BeforeUpdate} from "typeorm";
+    BeforeUpdate,
+    OneToMany
+} from "typeorm";
 
 const BCRYPT_ROUNDS = 10;
+import Chat from "./Chat";
+import Message from "./Message";
 
 @Entity()
 class User extends BaseEntity {
@@ -59,6 +64,12 @@ class User extends BaseEntity {
 
     @Column({type: "double precision", default: 0})
     lastOrientation: number;
+
+    @ManyToOne(type => Chat, chat => chat.participants)
+    chat: Chat;
+
+    @OneToMany(type => Message, message => message.user)
+    messages: Message[];
 
     @CreateDateColumn() createdAt: string;
 
