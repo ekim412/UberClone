@@ -95,6 +95,23 @@ export interface FacebookConnectResponse {
   token: string | null;
 }
 
+export interface EmailSignInMutationArgs {
+  email: string;
+  password: string;
+}
+
+export interface EmailSignInResponse {
+  ok: boolean;
+  error: string | null;
+  token: string | null;
+}
+
+export interface Mutation {
+  EmailSignIn: EmailSignInResponse;
+  EmailSignUp: EmailSignUpResponse;
+  FacebookConnect: FacebookConnectResponse;
+}
+
 export interface Place {
   id: number;
   name: string;
