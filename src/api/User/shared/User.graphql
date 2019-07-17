@@ -8,6 +8,7 @@ type User {
     password: String
     phonenumber: String
     verifiedPhoneNumber: Boolean!
+    fbId: String
     profilePhoto: String
     createdAt: String!
     updatedAt: String

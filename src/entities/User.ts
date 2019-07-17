@@ -23,7 +23,7 @@ class User extends BaseEntity {
     @PrimaryGeneratedColumn() id: number;
 
     @Column({type: "text", unique: true})
-    email: string;
+    email: string | null;
 
     @Column({type: "boolean", default: false})
     verifiedEmail: boolean;
@@ -34,20 +34,23 @@ class User extends BaseEntity {
     @Column({type: "text"})
     lastName: string;
 
-    @Column({type: "int"})
+    @Column({type: "int", nullable: true})
     age: number;
 
-    @Column({type: "text"})
+    @Column({type: "text", nullable: true})
     password: string;
 
-    @Column({type: "text"})
+    @Column({type: "text", nullable: true})
     phoneNumber: string;
 
     @Column({type: "boolean", default: false})
-    verifiedPhoneNumber;
+    verifiedPhoneNumber: boolean;
+
+    @Column({type: "text", nullable: true})
+    fbId: string;
 
     @Column({type: "text"})
-    profilePhoto;
+    profilePhoto: string;
 
     @Column({type: "boolean", default: false})
     isDriving: boolean;
